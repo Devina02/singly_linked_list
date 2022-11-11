@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace singly_linked_list
 {
@@ -33,6 +30,7 @@ namespace singly_linked_list
             Node newnode = new Node();
             newnode.rollNumber = nim;
             newnode.name = nm;
+
             //if the node to be inserted is the first node
             if (START == null || nim <= START.rollNumber) 
             {
@@ -68,7 +66,80 @@ namespace singly_linked_list
         }
         public void traverse()
         {
+            if (listEmpty())
+            {
+                Console.WriteLine("\nList is empt.\n");
+            }
+            else
+            {
+                Console.WriteLine("\nThe records in the list are : ");
+                Node currentNode;
+                for (currentNode = START; currentNode != null;
+                    currentNode = currentNode.next)
 
+                    Console.Write(currentNode.rollNumber + " " + currentNode.name + " \n");
+
+                Console.WriteLine();
+
+            }
+        }
+        public bool delNode(int nim)
+        {
+            Node previous, current;
+            previous = current = null;
+            // check if the spesified node is present in the list or not
+            if (Search(nim, ref previous, ref current) == false)
+                return false;
+            previous.next = current.next;
+            if (current == START)
+                START = START.next;
+            return true;
+        }
+        public bool Search(int nim, ref Node previous, ref Node current)
+        {
+            previous = START;
+            current = START;
+            while ((current != null) && (nim != current.rollNumber))
+            {
+                previous = current;
+                current = current.next;
+            }
+            if (current == null)
+                return (false);
+            else
+                return (true);
+        }
+        public bool listEmpty()
+        {
+            if (START == null)
+                return true;
+            else
+                return false;
+        }
+    }
+    class Program
+    {
+        // check wheter the specified node is present in the list or not
+        static void Main(string[] args)
+        {
+            List obj = new List();
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("\nMENU");
+                    Console.WriteLine("1. Add a record to the list");
+                    Console.WriteLine("2. Delete a record from the list");
+                    Console.WriteLine("3. View all the records in the list");
+                    Console.WriteLine("4. Search for a record in the list");
+                    Console.WriteLine("5. EXIT");
+                    Console.Write("\nEnter your choice (1-5) : ");
+                    char ch = Convert.ToChar(Console.ReadLine());
+                    switch (ch)
+                    { }
+                    
+                }   
+            }
         }
     }
 }
