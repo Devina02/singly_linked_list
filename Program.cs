@@ -136,7 +136,13 @@ namespace singly_linked_list
                     Console.Write("\nEnter your choice (1-5) : ");
                     char ch = Convert.ToChar(Console.ReadLine());
                     switch (ch)
-                    { }
+                    {
+                        case '1':
+                            {
+                                obj.addNote();
+                            }
+                            break;
+                    }
                     
                 }   
             }
